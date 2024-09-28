@@ -1,0 +1,77 @@
+body {
+
+    font-family: Arial, sans-serif;
+    margin: auto;
+
+}
+/**/
+header {
+
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+    background: #acb3b9;
+
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/*开始定义导航栏样式*/
+ul.topnav li a:hover:not(.active) {background-color: #111;} /*定义鼠标移上时的列表项颜色*/
+
+ul.topnav li a.active {background-color: #275495;} /*定义当前（活动的）列表项颜色*/
+
+ul.topnav li.right {float: right;}
+
+ul.topnav li a:hover, .dropdown:hover, .dropbtn {
+    background-color: #333; /*定义通常的列表项颜色*/
+}
+
+@media screen and (max-width: 600px){
+    ul.topnav li.right, 
+    ul.topnav li {float: none;}
+}
+
+/*定义结束，开始定义导航栏下拉菜单*/
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #5c95E6;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top:1px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
