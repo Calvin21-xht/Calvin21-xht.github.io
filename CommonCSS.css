@@ -75,3 +75,9 @@ ul.topnav li a:hover, .dropdown:hover, .dropbtn {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.footer {   /*定义底边栏*/
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+  }
