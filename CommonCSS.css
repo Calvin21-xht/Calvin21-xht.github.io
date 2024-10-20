@@ -4,7 +4,7 @@ body {
     margin: auto;
 
 }
-/**/
+/*定义头部区域样式*/
 header {
 
     padding: 10px;
@@ -13,16 +13,23 @@ header {
     background: #acb3b9;
 
 }
-
+/*开始定义导航栏样式*/
 ul.topnav {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    display: flex;
+    gap:5px;
 }
 
-ul.topnav li {float: left;}
+ul.topnav li {
+    float: left;
+}
+ul.topnav li.push-right {
+    margin-left: auto;
+  }
 
 ul.topnav li a {
     display: block;
@@ -32,12 +39,9 @@ ul.topnav li a {
     text-decoration: none;
 }
 
-/*开始定义导航栏样式*/
 ul.topnav li a:hover:not(.active) {background-color: #111;} /*定义鼠标移上时的列表项颜色*/
 
 ul.topnav li a.active {background-color: #275495;} /*定义当前（活动的）列表项颜色*/
-
-ul.topnav li.right {float: right;}
 
 ul.topnav li a:hover, .dropdown:hover, .dropbtn {
     background-color: #333; /*定义通常的列表项颜色*/
@@ -76,6 +80,23 @@ ul.topnav li a:hover, .dropdown:hover, .dropbtn {
     display: block;
 }
 
+section{
+    display:flex;
+    justify-content:center;
+    margin: 5px;
+    align-items: center;
+    flex-direction: row;
+}
+
+div.infobox{
+    background-color: lightgray;
+    padding: 5px;
+    margin: auto;
+    width: 70%;
+    max-width: 800px;
+    min-width: 400px;
+
+}
 footer {   /*定义底边栏*/
     background-color: #f1f1f1;
     padding: 10px;
