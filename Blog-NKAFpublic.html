@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <!--    定义头部标签    -->
+    <meta charset="UTF-8"> <!--    页面编码为UTF-8    -->
+    <title>Calvin21 个人博客</title> <!--    标题    -->
+    <link href="./CommonCSS.css" type="text/css" rel="stylesheet" />
+    <style>
+        /*
+        Ex Officio Theme
+        [2020 Wikidot Theme]
+        Created by Rounderhouse and aismallard.
+        Thanks to wctaiwan, stormbreath, TSATPWTCOTTTADC, Woedenaz for critique and help.
+        Based on Black Highlighter Theme created by Woedenaz and Croquembouche.
+        The GOC logo was created by 7happy7. Licensed under CC BY SA 3.0.
+        */
+
+        /* Fonts */
+
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&amp;amp;display=swap');
+
+        /* GOC logo */
+
+        @import url('https://scp-wiki.wdfiles.com/local--files/theme%3Agoc/goc-logo.css');
+
+        /* Variable definitions */
+
+        :root {
+            /* S-CSS-P Integration */
+            /* If you're making a new CSS theme, please include the following three variables at minimum. */
+            --theme-base: 'black-highlighter';
+            /* must be either 'black-highlighter' or 'sigma9' */
+            --theme-id: 'black-highlighter';
+            /* set this to the URL of your theme's page - e.g. for 'component:ar-theme', set it to 'ar-theme' */
+            --theme-name: 'goc';
+            /* set this to your theme's full name */
+            --theme-name-full: 'Ex Officio Theme';
+            /* no idea if this is the right var or not */
+
+            /* Header */
+            /* animated GOC logo, courtesy of 7happy7! */
+            --header-title: 'Global Occult Coalition';
+            --header-subtitle: 'CASEFILES ARCHIVE';
+
+            /* Typefaces */
+            --header-font: 'Russo One', sans-serif;
+            --title-font: 'Russo One', sans-serif;
+            --mono-font: 'PT Mono', 'Andale Mono', 'Courier New', Courier, monospace;
+
+            /* Standard Colors */
+            --white-monochrome: 252, 252, 252;
+            /* white */
+            --pale-gray-monochrome: 244, 244, 244;
+            /* v light gray for blockquotes and stuff */
+            --light-gray-monochrome: 170, 170, 170;
+            /* light accent gray for login status */
+            --gray-monochrome: 66, 66, 72;
+            /* gray */
+            --dark-gray-monochrome: 48, 48, 52;
+            /* dark accent gray for sidebar background */
+            --black-monochrome: 12, 12, 12;
+            /* black */
+            --pale-accent: 164, 194, 236;
+            --bright-accent: 164, 194, 236;
+            /* bright blue */
+            --medium-accent: 92, 149, 230;
+            /* pale blue */
+            --dark-accent: 39, 84, 149;
+            /* v pale blue */
+            --newpage-color: 99, 190, 255;
+
+            /* Primary Theme Colors */
+            --swatch-primary: var(--bright-accent);
+            --swatch-primary-darker: var(--medium-accent);
+            --swatch-primary-darkest: var(--dark-accent);
+
+            /* Primary Menu Colors */
+            --swatch-menubg-color: var(--pale-gray-monochrome);
+            --swatch-menubg-dark-color: var(--medium-accent);
+            --swatch-menubg-hover-color: var(--gray-monochrome);
+            --swatch-menutxt-light-color: var(--white-monochrome);
+            --swatch-border-color: var(--bright-accent);
+
+            /* Primary Header Colors */
+            --swatch-headerh1-color: var(--dark-accent);
+            --swatch-headerh2-color: var(--dark-accent);
+            --rating-module-button-color: var(--black-monochrome);
+            --rating-module-text-color: var(--black-monochrome);
+
+            /* Header measurements */
+            --header-height-on-desktop: 11rem;
+            --header-height-on-mobile: 7.5rem;
+            --topbar-height-on-desktop: 1.875rem;
+            --topbar-height-on-mobile: 3.5rem;
+
+            /* Sidebar */
+            --sidebar-transition-timing: 0.5s ease-in-out 0.1s;
+            --sidebar-internal-border-thickness: 0.125rem;
+            --background-gradient-distance: 20rem;
+            --diagonal-stripes: none;
+        }
+
+        :root:lang(cn) {
+            /* Header */
+            --header-title: '维持常态武装力量';
+            --header-subtitle: '地面部队总参谋部';
+
+            /* Typefaces */
+            --header-font: 'Russo One', "Noto Sans SC", sans-serif;
+            --title-font: 'Russo One', "Noto Sans SC", sans-serif;
+            --mono-font: 'PT Mono', 'Andale Mono', 'Courier New', Courier, '仿宋', monospace;
+        }
+
+        @media only screen and (max-width: 26.5625rem) {
+            :root {
+                --header-title: "UNGOC";
+            }
+        }
+
+        :root {
+            /* ===BACKGROUND GRADIENT=== */
+
+            /* ===GENERAL BACKGROUND=== */
+            /* Gradient Color used for the --gradient-background var */
+            --background-gradient-color: var(--bright-accent);
+
+            /* ===TOPBAR GRADIENT=== */
+            /* Colors used in the --gradient-topmenu var to give the topbar its color */
+            --swatch-topmenu-border-color: var(--medium-accent);
+            --swatch-topmenu-bg-color: var(--bright-accent);
+
+            /* ===LINK COLORS=== */
+            --link-color: var(--swatch-primary-darker);
+            --visited-link-color: var(--swatch-primary-darkest);
+            --hover-link-color: var(--swatch-primary-darkest);
+        }
+
+        #header {
+            /* ===HEADER ELEMENTS=== */
+            /* ===HEADER TITLES=== */
+            /* Header H1 and H2 colors */
+            --swatch-headerh1-color: var(--medium-accent);
+            --swatch-headerh2-color: var(--dark-accent);
+
+            /* ===SEARCH ELEMENT=== */
+            --search-icon-color: var(--swatch-text-tertiary-color);
+
+            /* ===LOGIN BOX ELEMENT=== */
+            --login-line-divider-color: var(--swatch-text-tertiary-color);
+            --login-username-color: var(--swatch-text-tertiary-color);
+            --login-myaccount-color: var(--swatch-text-tertiary-color);
+            --login-arrow-color: var(--swatch-text-tertiary-color);
+        }
+
+        #top-bar {
+            /* ===TOPBAR ELEMENTS=== */
+
+            /* ===TOPBAR CATEGORIES=== */
+            --topmenu-category-color: var(--swatch-text-tertiary-color);
+            --topmenu-category-hover-color: var(--swatch-text-tertiary-color);
+            --topmenu-hover-border-color: var(--swatch-primary);
+
+            --mobile-topmenu-sidebar-button-color: var(--swatch-text-tertiary-color);
+        }
+
+        /* ===FOOTER=== */
+        #footer {
+            --footer-link-hover-color: var(--swatch-text-tertiary-color);
+        }
+
+        /* ===LICENSE AREA=== */
+        #license-area {
+            --license-link-hover-color: var(--swatch-text-tertiary-color);
+        }
+
+        /* Add scrollbar */
+        html,
+        body,
+        #side-bar:hover {
+            scrollbar-color: rgb(var(--bright-accent)) rgb(var(--dark-accent));
+        }
+
+        ::-webkit-scrollbar,
+        #side-bar:hover::-webkit-scrollbar {
+            background-color: rgb(var(--bright-accent));
+        }
+
+        ::-webkit-scrollbar-thumb,
+        #side-bar:hover::-webkit-scrollbar-thumb {
+            background-color: rgb(var(--dark-accent));
+        }
+
+        /* Header shadow and colors */
+        #header {
+            -webkit-filter: drop-shadow(-.1rem .1rem 0 white);
+            filter: drop-shadow(-.1rem .1rem 0 white);
+        }
+
+        #top-bar,
+        #top-bar ::before,
+        #top-bar ::after {
+            -webkit-filter: unset;
+            filter: unset;
+        }
+
+        #header h1 a::before {
+            color: rgb(var(--dark-accent));
+        }
+
+        /* Remove BHL's letter spacing for main header and title */
+        #header h1 a::before,
+        #page-title {
+            letter-spacing: 0;
+        }
+
+        /* Login status link */
+        #login-status a {
+            color: rgb(var(--dark-accent));
+            font-weight: bold;
+        }
+
+        /* Search box */
+        #search-top-box input.empty {
+            background-color: rgba(var(--pale-gray-monochrome));
+            color: rgb(var(--medium-accent));
+        }
+
+        blockquote,
+        .blockquote {
+            border-style: outset;
+            border-color: rgb(var(--bright-accent));
+            background-color: rgba(var(--light-gray-monochrome), 0.03);
+        }
+
+        /* Set horizontal rules to have the double line GOC formats have */
+        hr {
+            padding: 0.0313rem;
+            border-top: 0.125rem solid #777;
+            border-bottom: 0.0625rem solid #777;
+            background: transparent;
+        }
+
+        /* Set background and style for section above topbar */
+        #extra-div-2 {
+            --drop-shadow: rgb(var(--pale-gray-monochrome));
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 11rem;
+            background: url('https://scp-wiki.wdfiles.com/local--files/theme%3Agoc/goc-background.png');
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+            pointer-events: none;
+            -webkit-filter: drop-shadow(-0.125rem 0.125rem 1rem var(--drop-shadow));
+            filter: drop-shadow(-0.125rem 0.125rem 1rem var(--drop-shadow));
+        }
+
+        div.warning {
+            width: 80%;
+            margin: 0.625rem auto;
+            padding: 0.9375rem;
+            border: solid 0.125rem rgb(var(--swatch-primary-darker));
+            background: #fff url('https://scp-wiki.wdfiles.com/local--files/theme%3Agoc/goc-fade.png') center no-repeat;
+            color: black;
+            text-align: center;
+        }
+
+        div.warning hr {
+            border-color: rgb(var(--swatch-primary-darker));
+        }
+
+        :root {
+            --title-font: 'Russo One', "Noto Sans SC", sans-serif;
+            --bright-accent: 164, 194, 236;
+            --medium-accent: 92, 149, 230;
+            --dark-accent: 39, 84, 149;
+            --swatch-border-color: var(--bright-accent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Calvin21 个人博客</h1>
+            <p>互联网资源共享</p>
+        </header>
+
+        <ul class="topnav">
+            <li><a class="active" href="PISCS.html">主页</a></li>
+            <li><a href="DownloadSite.html">下载站</a></li>
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">媒体</a>
+                    <div class="dropdown-content">
+                        <a href="https://space.bilibili.com/695349574" target="_blank">Bilibili</a>
+                    </div>
+                </div>
+            </li>
+            <li class="push-right"><a href="about.html">关于</a></li>
+        </ul>
+
+        <div class="wrapper clearfix" style="padding: 0px">
+            <section>
+                <div class="infobox">
+                    <h1><span>维持常态武装力量NKAF技术出版物</span></h1>
+                    <h2><span>ATP-3&#160;21.20—机械化步兵营(ICV)组织节选</span></h2>
+                    <hr />
+                    <div id="toc" class="floatright">
+                        <div id="toc-list">
+                            <div style="margin-left: 2em;"><a href="#toc0">前言</a></div>
+                            <div style="margin-left: 1em;"><a href="#toc1">机步营组织</a></div>
+                            <div style="margin-left: 2em;"><a href="#toc2">营部及营部连</a></div>
+                            <div style="margin-left: 3em;"><a href="#toc3">营部</a></div>
+                            <div style="margin-left: 3em;"><a href="#toc4">营部连</a></div>
+                            <div style="margin-left: 4em;"><a href="#toc5">营自动榴弹发射器排</a></div>
+                            <div style="margin-left: 4em;"><a href="#toc6">营反坦克排</a></div>
+                            <div style="margin-left: 2em;"><a href="#toc7">营附属支援单位</a></div>
+                            <div style="margin-left: 3em;"><a href="#toc8">营迫击炮连</a></div>
+                            <div style="margin-left: 3em;"><a href="#toc9">营支援连</a></div>
+                            <div style="margin-left: 2em;"><a href="#toc10">机械化步兵连</a></div>
+                            <div style="margin-left: 3em;"><a href="#toc11">连部</a></div>
+                            <div style="margin-left: 4em;"><a href="#toc12">连自动榴弹发射器排（仅限机步旅机步营中）</a></div>
+                            <div style="margin-left: 3em;"><a href="#toc13">机械化步兵排</a></div>
+                            <div style="margin-left: 4em;"><a href="#toc14">排部</a></div>
+                            <div style="margin-left: 4em;"><a href="#toc15">机械化步兵班&amp;车组</a></div>
+                        </div>
+                    </div>
+                    <h2 id="toc0"><span>前言</span></h2>
+                    <p>1-1.
+                        NKAF机械化步兵旅的机械化步兵营(步战车)是地面部队最为灵活，最为有效的机动部队编制之一。机械化步兵营运用搭乘步兵战车的步兵和配属单位，组织开展决定性行动——进攻、防御和维稳（维持常态）任务。机步营可以在整个军事行动范围内快速部署、进入行动和执行任务，并与其他地面单位、空天军和海军等进行合成作战
+                    </p>
+                    <p>1-2. 机械化步兵营也是NKAF营级战术群的核心单位，在执行任务时通常编为营级战术群并加强配属单位，统一进行行动。</p>
+                    <hr />
+                    <h1 id="toc1"><span>机步营组织</span></h1>
+                    <p>1-4. 机步营有一个营部和营部连、三个机械化步兵连（每个连下辖三个机步排）、一个迫击炮连和一个支援连。全体单位允许指挥官根据任务需要进行组织。在必要时还可加强有：</p>
+                    <ul>
+                        <li>一个坦克连;</li>
+                        <li>(自行)炮兵营;</li>
+                        <li>防空单位;</li>
+                        <li>喷火工兵单位等</li>
+                    </ul>
+                    <h2 id="toc2"><span>营部及营部连</span></h2>
+                    <p>1-5. 营部和营部连[HHC]包括营指挥部、营参谋部、连指挥部、营自动榴弹发射器排以及反坦克排。营部和营部连通过指挥部、参谋部和各专业排，以及其他附属支援元素来执行任务指挥。</p>
+                    <p>1-6. 在组织为营级战术群时，一个排级别的攻击或评估小组可由当地全超联最高指挥同意后加强给BTG。</p>
+                    <h3 id="toc3"><span><strong>营部</strong></span></h3>
+                    <p>1-7. 营指挥部由营长、营执行官 (XO)和营指挥军士长等组成。营指挥部通过辎重队的车辆单位协助任务指挥和运送指挥部人员，但在执行任务期间，他们通常位于指挥步战车内或者营指挥观察所中。</p>
+                    <p>1-8. 营指挥部是第一个拥有编制参谋的指挥级别。基本参谋结构包括按专业领域划分的各类参谋部分，由各类参谋官负责。参谋部支持指挥官行使任务指挥权，协助下属单位，并向营外单位和组织提供信息。
+                    </p>
+                    <p>1-9. 在组织为营战术群时，一个直接隶属于营部的情报科可加强到营支援连。</p>
+                    <hr />
+                    <h3 id="toc4"><span><strong>营部连</strong></span></h3>
+                    <p>1-10. 营直属连由连部和营的自动榴弹发射器排、反坦克排以及加强的坦克/防空/喷火单位等组成。连部人员以及各个排为指挥官提供了灵活支援。</p>
+                    <p>1-11.
+                        营直属连的连部负责为营部及营直属部连提供领导、人员管理和后勤支援。营部连包括营部和营部连指挥官、副指挥官、一级军士以及后勤和通信支援人员。营部和营部连指挥官、副指挥官和一级军士没有固定的工作位置，他们会根据需要进行调配，以最佳方式支持该营的任务。
+                    </p>
+                    <h4 id="toc5"><span><em>营自动榴弹发射器排</em></span></h4>
+                    <blockquote>
+                        <p>注意：在NKAF地面部队机步团中的机步营才拥有此编制，与之相对的机步旅机步营中，每个机械化步兵连中都配有一个AGLP，也因此不存在直属于营的AGLP。</p>
+                    </blockquote>
+                    <p>1-12. 营自动榴弹发射器排(营AGLP)是下属于营部连的近距离火力支援力量，装备有AGS17/MK19等自动榴弹系统。</p>
+                    <p>1-13. 营AGLP有4个AGL班，每班两挺AGL系统，在作战时作为排整体加强给第一梯队机步连或分散加强给第一梯队机步排。</p>
+                    <p>1-14.
+                        营AGLP的任务是对第一梯队连/排提供及时、迅速的曲射火力支援，干扰/压制/消灭敌暴露的有生力量，同时为友军提供掩护和隐蔽（运用烟雾弹）。在实战应用中，营AGLP类似于小口径迫击炮的下级更近距离替代和补充，威力更小但更为灵活。
+                    </p>
+                    <p>1-15. 营AGLP人员搭乘步战车进行机动，下车构筑发射阵地。但有时也可运用车载的榴弹系统完成任务。</p>
+                    <h4 id="toc6"><span><em>营反坦克排</em></span></h4>
+                    <p>1-16.
+                        营反坦克排是下属于营部连的反装甲力量，由于机步营装备的步兵战车大多已经配有ATGM系统，故反坦克排主要装备了3门牵引式反坦克炮作为ATGM的补充，也有可能装备自行反坦克炮系统或自行ATGM运载车。
+                    </p>
+                    <p>1-17. 营反坦克排拥有三个班，每个班装备1门牵引式反坦克炮。牵引式反坦克炮在机动时由辎重队的卡车负责牵引。</p>
+                    <p>1-18. 营反坦克排负责向营提供迅速的直瞄反坦克火力支援，并作为ATGM系统的补充。反坦克排同样可以用来向步兵提供近距离直瞄火力支援。</p>
+                    <hr />
+                    <h2 id="toc7"><span>营附属支援单位</span></h2>
+                    <h3 id="toc8"><span><strong>营迫击炮连</strong></span></h3>
+                    <p>1-19.
+                        营迫击炮连是隶属于营部的近距离火力支援力量。营迫击炮连的主要任务是提供即时、响应迅速的间接火力，以支援连或营的作战。营迫击炮连由迫击炮连部、火力指挥中心组和8个迫击炮班组成。连的火力指挥中心负责控制和指挥迫击炮连的火力。机步营的迫击炮班配备有120毫米迫击炮，并由辎重队负责牵引。
+                    </p>
+                    <p>1-20. 迫击炮连使指挥官能够利用间接火力塑造营的近距离作战，从而——</p>
+                    <ul>
+                        <li>为在任何地形中突击的步兵部队提供近距离火力支援。</li>
+                        <li>摧毁、无效化、压制或干扰敌军部队，并迫使装甲车辆封闭。</li>
+                        <li>固定敌军部队或减少敌军的机动性。</li>
+                        <li>将敌军突击部队引导至交战区域。</li>
+                        <li>剥夺敌军在狭窄地形中的优势，迫使敌军进入由直瞄火力武器覆盖的区域。</li>
+                        <li>在城市地形中优化间接火力。</li>
+                        <li>显著提高步兵在近距离步兵突击中的杀伤能力和生存能力。</li>
+                        <li>为友军行动提供遮蔽。</li>
+                    </ul>
+                    <p>1-21. 每个迫击炮系统可以提供三种主要类型的迫击炮火力，同时也可以应用由TGT科技支援排提供的TanGenT级迫击炮弹药支援，如下所示：</p>
+                    <ul>
+                        <li>高爆弹用于压制或摧毁敌方徒步步兵、迫击炮及其他支援武器，并阻止人员、车辆和补给品在敌方前沿地区的移动。爆炸白磷弹常与高爆弹混合使用，以增强其压制和毁伤效果。[有关精确制导迫击炮弹（仅限120毫米）的信息，请参见技术出版物相关内容]
+                        </li>
+                        <li>遮蔽弹用于在友军机动或攻击时隐藏他们，并使敌方辅助武器致盲。遮蔽剂也可用于在敌军被零碎摧毁时隔离一部分敌军。一些迫击炮弹使用爆炸白磷来实现这种遮蔽。燃烧的白磷可用于标记其他武器（通常是飞机）打击的目标，以及用于发出信号。
+                        </li>
+                        <li>照明弹，包括红外照明弹，用于揭示被黑暗掩盖的敌军位置。它们允许指挥官确认或否认敌军的存在，而不会暴露友军直接火力武器的位置。照明火力通常与高爆火力协调使用，既可以暴露敌军，又能击毙或压制敌军。
+                        </li>
+                        <li>附着奇术进程弹药可由TGT支援排提供，用于投送小范围奇术，可以辅助外勤小组作战。附着奇术进程弹药的种类繁多，详见军需部门技术出版物。</li>
+                        <li><em>现实稳定弹</em>可经最高指挥部批准由TGT支援排提供，用于（辅助攻击和评估小组）暂时压制绿色型个体。营超威胁顾问（S-7）需要确保基于第一、第三和第四任务有必要使用该弹药。任何现实稳定弹药的消耗都必须受军需部门严格监督。
+                        </li>
+                    </ul>
+                    <h3 id="toc9"><span><strong>营支援连</strong></span></h3>
+                    <p>1-22. 营支援连是机步营的综合保障/后勤力量，负责整个营和营战术群的医疗、后勤、维护、运输等任务。支援连编制随任务要求而变化，但至少应有以下几个单位：</p>
+                    <ul>
+                        <li>营医疗排;</li>
+                        <li>营辎重队;</li>
+                        <li>营工程排;</li>
+                        <li>营通信排;</li>
+                        <li>营综合后勤排;</li>
+                        <li>营无人机分队等。</li>
+                    </ul>
+                    <p>并在必要时加强有：</p>
+                    <ul>
+                        <li>营情报科;</li>
+                        <li>运输直升机中队;</li>
+                        <li>核生化防护分队;</li>
+                        <li>特种工程分队等。</li>
+                    </ul>
+                    <p>1-23. 在必要且由全超联最高指挥部同意后，一个TanGenT科技支援排可加强到支援连，辅助营执行维持常态任务。</p>
+                    <hr />
+                    <h2 id="toc10"><span>机械化步兵连</span></h2>
+                    <p>1-24. 机步营的机械化步兵连是营最为重要的作战力量。机步连运用搭乘步战车的机械化步兵执行和完成上级任务。机步连在作战时需要充分运用机械化步兵的灵活性和机动性。</p>
+                    <p>1-25机械化步兵营的编制和装备在不同地区可能存在差异，但总体上可以通用。一般而言，一个机械化步兵连由一个连部和三个机械化步兵排构成，在机步旅机步营还拥有一个自动榴弹发射器排。</p>
+                    <h3 id="toc11"><span><strong>连部</strong></span></h3>
+                    <p>1-26. 连部是机步连的指挥中枢，包括连长、政治工作副连长、连军士、连技术员、连机械师和连军医。连部人员搭乘一辆步战车行进，或位于连指挥观察所工事中。</p>
+                    <h4 id="toc12"><span><em>连自动榴弹发射器排</em>（仅限机步旅机步营中）</span></h4>
+                    <p>1-27. 连自动榴弹发射器排(连AGLP)是隶属于连部的近距离火力支援力量，装备种类同营AGLP。连AGLP负责向连第一/二梯队排提供迅速的直瞄/间瞄火力支援，或为其提供遮蔽。</p>
+                    <p>1-28. 连AGLP包括两个AGL班共4挺自动榴弹发射器。人员分别搭乘两辆步战车随连部运动，一般下车作战，有时也利用车载AGL完成任务。</p>
+                    <h3 id="toc13"><span>机械化步兵排</span></h3>
+                    <p>1-29. 机械化步兵排是机步连乃至机步营的核心，其装备和编制随地区变化较大，详见对应作战手册。此处及下文机步班均以东欧等前华约地区NKAF的组织为例。</p>
+                    <p>1-30. 一般而言，机械化步兵排是实施具体作战任务的最小单位。机步排包括一个排部和三个机步班。</p>
+                    <h4 id="toc14"><span><strong>排部</strong></span></h4>
+                    <p>1-31.
+                        排部是机步排的指挥中枢，由排长、排军士、排通用机枪手及其副射手、排精确射手和排医疗兵构成。排部人员分散搭乘三个机步班的三辆步战车中。在作战中，排长随排作战人员下车，此时其在车职能由排军士接替。
+                    </p>
+                    <h4 id="toc15"><span>机械化步兵班&amp;车组</span></h4>
+                    <p>1-32. 一个机械化步兵班由一个火力组和一个机动组构成。火力组包括班长、火箭筒手、机枪手及其副射手；机动组包括一名高级步枪手和一到两名步枪手（均装备有下挂榴弹）。</p>
+                    <p>1-33. 一个机步班搭乘一辆步战车。班长在车上时作为车长进行指挥，但随班下车。</p>
+                    <p>1-34. 车组名义上由营加强到下方，每个车组包括一名炮手和一名驾驶员（兼机械师），配有自动自卫武器。炮手在班长下车时接任车长职能。</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <p>POWERED BY CALVIN21</p>
+    </footer>
+
+
+</body>
+
+</html>
