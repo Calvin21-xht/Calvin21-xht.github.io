@@ -1,104 +1,259 @@
+/* 
+ * 全局CSS变量定义
+ * 使用CSS变量便于统一管理和维护样式
+ */
+:root {
+    /* 配色方案 */
+    --primary-color: rgb(92, 149, 230); /* 主色调 - 蓝色 */
+    --secondary-color: rgb(39, 84, 149); /* 辅助色 - 深蓝色 */
+    --text-color: rgb(252, 252, 252); /* 文字颜色 - 白色 */
+    --hover-color: rgb(39, 84, 149); /* 悬停颜色 */
+    --dropdown-bg: rgba(164, 194, 236, 0.95); /* 下拉菜单背景 */
+    --infobox-bg: rgba(244, 244, 244, 0.9); /* 信息框背景 */
+    
+    /* 背景渐变效果 */
+    --background-gradient: linear-gradient(
+        135deg, /* 135度渐变角度 */
+        rgba(164, 194, 236, 0.1) 0%, /* 起始颜色 */
+        rgba(92, 149, 230, 0.2) 50%, /* 中间颜色 */
+        rgba(39, 84, 149, 0.3) 100% /* 结束颜色 */
+    );
+    
+    /* 阴影效果定义 */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1); /* 小阴影 */
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15); /* 中等阴影 */
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2); /* 大阴影 */
+    
+    /* 边框样式 */
+    --border-radius: 4px; /* 圆角半径 */
+    --border-width: 2px; /* 边框宽度 */
+    --border-color: rgba(164, 194, 236, 0.5); /* 边框颜色 */
+}
+
+/* 
+ * 导入Google字体
+ * 主字体：Russo One
+ * 备用字体：Arial
+ */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+/* 
+ * 页面主体样式
+ * 设置全局字体、背景、文字颜色等
+ */
 body {
-
-    font-family: Arial, sans-serif;
-    margin: auto;
-
+    font-family: 'Russo One', Arial, sans-serif; /* 字体设置 */
+    margin: auto; /* 居中布局 */
+    background: var(--background-gradient); /* 渐变背景 */
+    color: var(--text-color); /* 文字颜色 */
+    line-height: 1.6; /* 行高设置 */
 }
-/*定义头部区域样式*/
+
+/* 
+ * 页头样式
+ * 包含网站标题和主要导航
+ */
 header {
-
-    padding: 10px;
-    text-align: center;
-    margin: auto;
-    background: #acb3b9;
-
+    padding: 20px; /* 内边距 */
+    text-align: center; /* 文字居中 */
+    margin: 0px auto; /* 外边距 */
+    background: rgba(39, 84, 149, 0.9); /* 背景颜色 */
+    border-radius: var(--border-radius); /* 圆角 */
+    box-shadow: var(--shadow-md); /* 阴影效果 */
+    color: white; /* 文字颜色 */
 }
-/*开始定义导航栏样式*/
+
+/* 
+ * 顶部导航栏样式
+ * 使用flex布局实现响应式导航
+ */
 ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    display: flex;
-    gap:5px;
+    list-style-type: none; /* 去除列表样式 */
+    margin: 0 0; /* 上下边距 */
+    padding: 3px; /* 内边距 */
+    overflow: hidden; /* 溢出处理 */
+    background: rgba(92, 149, 230, 0.9); /* 背景颜色 */
+    display: flex; /* flex布局 */
+    gap: 10px; /* 子元素间距 */
+    border-radius: var(--border-radius); /* 圆角 */
+    box-shadow: var(--shadow-sm); /* 阴影效果 */
 }
 
+/* 
+ * 导航栏子元素样式
+ * 控制导航栏中每个项目的布局和行为
+ */
 ul.topnav li {
-    float: left;
+    float: left; /* 左浮动布局 */
 }
+
+/* 
+ * 右侧对齐的导航项
+ * 用于将特定导航项推到右侧
+ */
 ul.topnav li.push-right {
-    margin-left: auto;
-  }
+    margin-left: auto; /* 自动左边距实现右对齐 */
+}
 
+/* 
+ * 导航链接样式
+ * 控制导航栏中每个链接的外观和交互
+ */
 ul.topnav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    display: block; /* 块级显示 */
+    color: var(--text-color); /* 文字颜色 */
+    text-align: center; /* 文字居中 */
+    padding: 14px 16px; /* 内边距 */
+    text-decoration: none; /* 去除下划线 */
+    transition: background-color 0.3s ease; /* 背景色过渡效果 */
 }
 
-ul.topnav li a:hover:not(.active) {background-color: #111;} /*定义鼠标移上时的列表项颜色*/
-
-ul.topnav li a.active {background-color: #275495;} /*定义当前（活动的）列表项颜色*/
-
-ul.topnav li a:hover, .dropdown:hover, .dropbtn {
-    background-color: #333; /*定义通常的列表项颜色*/
+/* 
+ * 导航链接悬停效果
+ * 当前激活项除外
+ */
+ul.topnav li a:hover:not(.active) {
+    background-color: var(--hover-color); /* 悬停背景色 */
 }
 
-@media screen and (max-width: 600px){
-    ul.topnav li.right, 
-    ul.topnav li {float: none;}
+/* 
+ * 当前激活的导航项样式
+ */
+ul.topnav li a.active {
+    background-color: var(--hover-color); /* 激活项背景色 */
 }
 
-/*定义结束，开始定义导航栏下拉菜单*/
+/* 
+ * 导航栏和下拉菜单的通用悬停效果
+ */
+ul.topnav li a:hover, 
+.dropdown:hover, 
+.dropbtn {
+    background-color: var(--dropdown-color); /* 悬停背景色 */
+}
 
+/* 
+ * 下拉菜单容器样式
+ */
 .dropdown {
-    display: inline-block;
+    display: inline-block; /* 行内块级显示 */
 }
 
+/* 
+ * 下拉菜单内容样式
+ * 默认隐藏，悬停时显示
+ */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #5c95E6;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    margin-top:1px;
+    display: none; /* 默认隐藏 */
+    position: absolute; /* 绝对定位 */
+    background-color: var(--dropdown-bg); /* 背景颜色 */
+    min-width: 160px; /* 最小宽度 */
+    box-shadow: var(--shadow-lg); /* 阴影效果 */
+    margin-top: 1px; /* 上边距 */
+    z-index: 1; /* 层级 */
+    border-radius: var(--border-radius); /* 圆角 */
 }
 
+/* 
+ * 下拉菜单链接样式
+ */
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+    color: black; /* 文字颜色 */
+    padding: 12px 16px; /* 内边距 */
+    text-decoration: none; /* 去除下划线 */
+    display: block; /* 块级显示 */
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+/* 
+ * 下拉菜单链接悬停效果
+ */
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+}
 
+/* 
+ * 下拉菜单显示效果
+ * 鼠标悬停时显示下拉内容
+ */
 .dropdown:hover .dropdown-content {
-    display: block;
+    display: block; /* 显示下拉内容 */
 }
 
-section{
-    display:flex;
-    justify-content:center;
-    margin: 5px;
-    align-items: center;
-    flex-direction: row;
+/* 
+ * 内容区块样式
+ * 使用flex布局实现内容居中
+ */
+section {
+    display: flex; /* flex布局 */
+    justify-content: center; /* 水平居中 */
+    margin: 20px; /* 外边距 */
+    align-items: center; /* 垂直居中 */
+    flex-direction: row; /* 横向排列 */
 }
 
-div.infobox{
-    background-color: lightgray;
-    padding: 5px;
-    margin: auto;
-    width: 70%;
-    max-width: 800px;
-    min-width: 400px;
-
+/* 
+ * 信息框样式
+ * 用于显示重要提示或说明内容
+ */
+div.infobox {
+    background-color: var(--infobox-bg); /* 背景颜色 */
+    padding: 1.5rem; /* 内边距 */
+    margin: 20px auto; /* 外边距 */
+    width: 70%; /* 宽度 */
+    max-width: 800px; /* 最大宽度 */
+    min-width: 400px; /* 最小宽度 */
+    border-radius: var(--border-radius); /* 圆角 */
+    box-shadow: var(--shadow-md); /* 阴影效果 */
+    color: #333; /* 文字颜色 */
 }
-footer {   /*定义底边栏*/
-    background-color: #f1f1f1;
-    padding: 10px;
-    text-align: center;
-  }
+
+/* 
+ * 页脚样式
+ * 包含版权信息和网站底部内容
+ */
+footer {
+    background: rgba(39, 84, 149, 0.9); /* 背景颜色 */
+    padding: 20px; /* 内边距 */
+    text-align: center; /* 文字居中 */
+    color: white; /* 文字颜色 */
+    margin-top: 40px; /* 上边距 */
+    border-radius: var(--border-radius) var(--border-radius) 0 0; /* 顶部圆角 */
+    box-shadow: var(--shadow-sm); /* 阴影效果 */
+}
+
+/* 
+ * 响应式设计断点
+ * 768px以下设备样式调整
+ */
+@media screen and (max-width: 768px) {
+    div.infobox {
+        width: 90%; /* 调整宽度 */
+        min-width: 300px; /* 调整最小宽度 */
+    }
+    
+    ul.topnav {
+        flex-wrap: wrap; /* 允许换行 */
+    }
+}
+
+/* 
+ * 响应式设计断点
+ * 480px以下设备样式调整
+ */
+@media screen and (max-width: 480px) {
+    ul.topnav li {
+        width: 100%; /* 全宽显示 */
+    }
+    
+    .dropdown-content {
+        position: static; /* 静态定位 */
+    }
+    
+    header {
+        padding: 15px; /* 调整内边距 */
+    }
+    
+    footer {
+        padding: 15px; /* 调整内边距 */
+    }
+}
