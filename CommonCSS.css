@@ -2,7 +2,7 @@
  * 全局CSS变量定义
  * 使用CSS变量便于统一管理和维护样式
  */
-:root {
+ :root {
     /* 配色方案 */
     --primary-color: rgb(92, 149, 230); /* 主色调 - 蓝色 */
     --secondary-color: rgb(39, 84, 149); /* 辅助色 - 深蓝色 */
