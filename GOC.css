@@ -1,0 +1,272 @@
+/*
+Ex Officio Theme
+[2020 Wikidot Theme]
+Created by Rounderhouse and aismallard.
+Thanks to wctaiwan, stormbreath, TSATPWTCOTTTADC, Woedenaz for critique and help.
+Based on Black Highlighter Theme created by Woedenaz and Croquembouche.
+The GOC logo was created by 7happy7. Licensed under CC BY SA 3.0.
+*/
+ 
+/* Fonts */
+ 
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+ 
+/* GOC logo */
+ 
+@import url('https://scp-wiki.wdfiles.com/local--files/theme%3Agoc/goc-logo.css');
+ 
+/* Variable definitions */
+ 
+:root {
+    /* S-CSS-P Integration */
+    /* If you're making a new CSS theme, please include the following three variables at minimum. */
+    --theme-base: 'black-highlighter';
+    /* must be either 'black-highlighter' or 'sigma9' */
+    --theme-id: 'black-highlighter';
+    /* set this to the URL of your theme's page - e.g. for 'component:ar-theme', set it to 'ar-theme' */
+    --theme-name: 'goc';
+    /* set this to your theme's full name */
+    --theme-name-full: 'Ex Officio Theme';
+    /* no idea if this is the right var or not */
+ 
+    /* Header */
+    /* animated GOC logo, courtesy of 7happy7! */
+    --header-title: 'Global Occult Coalition';
+    --header-subtitle: 'CASEFILES ARCHIVE';
+ 
+    /* Typefaces */
+    --header-font: 'Russo One', sans-serif;
+    --title-font: 'Russo One', sans-serif;
+    --mono-font: 'PT Mono', 'Andale Mono', 'Courier New', Courier, monospace;
+ 
+    /* Standard Colors */
+    --white-monochrome: 252, 252, 252;
+    /* white */
+    --pale-gray-monochrome: 244, 244, 244;
+    /* v light gray for blockquotes and stuff */
+    --light-gray-monochrome: 170, 170, 170;
+    /* light accent gray for login status */
+    --gray-monochrome: 66, 66, 72;
+    /* gray */
+    --dark-gray-monochrome: 48, 48, 52;
+    /* dark accent gray for sidebar background */
+    --black-monochrome: 12, 12, 12;
+    /* black */
+    --pale-accent: 164, 194, 236;
+    --bright-accent: 164, 194, 236;
+    /* bright blue */
+    --medium-accent: 92, 149, 230;
+    /* pale blue */
+    --dark-accent: 39, 84, 149;
+    /* v pale blue */
+    --newpage-color: 99, 190, 255;
+ 
+    /* Primary Theme Colors */
+    --swatch-primary: var(--bright-accent);
+    --swatch-primary-darker: var(--medium-accent);
+    --swatch-primary-darkest: var(--dark-accent);
+ 
+    /* Primary Menu Colors */
+    --swatch-menubg-color: var(--pale-gray-monochrome);
+    --swatch-menubg-dark-color: var(--medium-accent);
+    --swatch-menubg-hover-color: var(--gray-monochrome);
+    --swatch-menutxt-light-color: var(--white-monochrome);
+    --swatch-border-color: var(--bright-accent);
+ 
+    /* Primary Header Colors */
+    --swatch-headerh1-color: var(--dark-accent);
+    --swatch-headerh2-color: var(--dark-accent);
+    --rating-module-button-color: var(--black-monochrome);
+    --rating-module-text-color: var(--black-monochrome);
+ 
+    /* Header measurements */
+    --header-height-on-desktop: 11rem;
+    --header-height-on-mobile: 7.5rem;
+    --topbar-height-on-desktop: 1.875rem;
+    --topbar-height-on-mobile: 3.5rem;
+ 
+    /* Sidebar */
+    --sidebar-transition-timing: 0.5s ease-in-out 0.1s;
+    --sidebar-internal-border-thickness: 0.125rem;
+    --background-gradient-distance: 20rem;
+    --diagonal-stripes: none;
+}
+ 
+:root:lang(cn) {
+    /* Header */
+    --header-title: '全球超自然联盟';
+    --header-subtitle: '卷宗档案库';
+ 
+    /* Typefaces */
+    --header-font: 'Russo One', "Noto Sans SC", sans-serif;
+    --title-font: 'Russo One', "Noto Sans SC", sans-serif;
+    --mono-font: 'PT Mono', 'Andale Mono', 'Courier New', Courier, '仿宋', monospace;
+}
+ 
+@media only screen and (max-width: 26.5625rem) {
+    :root {
+        --header-title: "UNGOC";
+    }
+}
+ 
+:root {
+    /* ===BACKGROUND GRADIENT=== */
+ 
+        /* ===GENERAL BACKGROUND=== */
+        /* Gradient Color used for the --gradient-background var */
+    --background-gradient-color: var(--bright-accent);
+ 
+    /* ===TOPBAR GRADIENT=== */
+        /* Colors used in the --gradient-topmenu var to give the topbar its color */
+        --swatch-topmenu-border-color: var(--medium-accent);
+        --swatch-topmenu-bg-color: var(--bright-accent);
+ 
+    /* ===LINK COLORS=== */
+    --link-color: var(--swatch-primary-darker);
+    --visited-link-color: var(--swatch-primary-darkest);
+    --hover-link-color: var(--swatch-primary-darkest);
+}
+ 
+#header {
+    /* ===HEADER ELEMENTS=== */
+        /* ===HEADER TITLES=== */
+        /* Header H1 and H2 colors */
+    --swatch-headerh1-color: var(--medium-accent);
+    --swatch-headerh2-color: var(--dark-accent);
+ 
+        /* ===SEARCH ELEMENT=== */
+    --search-icon-color: var(--swatch-text-tertiary-color);
+ 
+        /* ===LOGIN BOX ELEMENT=== */
+    --login-line-divider-color: var(--swatch-text-tertiary-color);
+    --login-username-color: var(--swatch-text-tertiary-color);
+    --login-myaccount-color: var(--swatch-text-tertiary-color);
+    --login-arrow-color: var(--swatch-text-tertiary-color);
+}
+ 
+#top-bar {
+    /* ===TOPBAR ELEMENTS=== */
+ 
+        /* ===TOPBAR CATEGORIES=== */
+    --topmenu-category-color: var(--swatch-text-tertiary-color);
+    --topmenu-category-hover-color: var(--swatch-text-tertiary-color);
+    --topmenu-hover-border-color: var(--swatch-primary);
+ 
+    --mobile-topmenu-sidebar-button-color: var(--swatch-text-tertiary-color);
+}
+ 
+/* ===FOOTER=== */
+#footer {
+    --footer-link-hover-color: var(--swatch-text-tertiary-color);
+}
+ 
+    /* ===LICENSE AREA=== */
+#license-area {
+    --license-link-hover-color: var(--swatch-text-tertiary-color);
+}
+ 
+/* Add scrollbar */
+html,
+body,
+#side-bar:hover {
+    scrollbar-color: rgb(var(--bright-accent)) rgb(var(--dark-accent));
+}
+ 
+::-webkit-scrollbar,
+#side-bar:hover::-webkit-scrollbar {
+    background-color: rgb(var(--bright-accent));
+}
+ 
+::-webkit-scrollbar-thumb,
+#side-bar:hover::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--dark-accent));
+}
+ 
+/* Header shadow and colors */
+#header {
+    -webkit-filter: drop-shadow(-.1rem .1rem 0 white);
+            filter: drop-shadow(-.1rem .1rem 0 white);
+}
+ 
+#top-bar,
+#top-bar ::before,
+#top-bar ::after {
+    -webkit-filter: unset;
+            filter: unset;
+}
+ 
+#header h1 a::before {
+    color: rgb(var(--dark-accent));
+}
+ 
+/* Remove BHL's letter spacing for main header and title */
+#header h1 a::before,
+#page-title {
+    letter-spacing: 0;
+}
+ 
+/* Login status link */
+#login-status a {
+    color: rgb(var(--dark-accent));
+    font-weight: bold;
+}
+ 
+/* Search box */
+#search-top-box input.empty {
+    background-color: rgba(var(--pale-gray-monochrome));
+    color: rgb(var(--medium-accent));
+}
+ 
+blockquote,
+.blockquote {
+    border-style: outset;
+    border-color: rgb(var(--bright-accent));
+    background-color: rgba(var(--light-gray-monochrome), 0.03);
+}
+ 
+/* Set horizontal rules to have the double line GOC formats have */
+hr {
+    padding: 0.0313rem;
+    border-top: 0.125rem solid #777;
+    border-bottom: 0.0625rem solid #777;
+    background: transparent;
+}
+ 
+/* Set background and style for section above topbar */
+#extra-div-2 {
+    --drop-shadow: rgb(var(--pale-gray-monochrome));
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 11rem;
+    background: url('https://scp-wiki.wdfiles.com/local--files/theme%3Agoc/goc-background.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    pointer-events: none;
+    -webkit-filter: drop-shadow(-0.125rem 0.125rem 1rem var(--drop-shadow));
+            filter: drop-shadow(-0.125rem 0.125rem 1rem var(--drop-shadow));
+}
+ 
+div.warning {
+    width: 80%;
+    margin: 0.625rem auto;
+    padding: 0.9375rem;
+    border: solid 0.125rem rgb(var(--swatch-primary-darker));
+    background: #fff url('https://scp-wiki.wdfiles.com/local--files/theme%3Agoc/goc-fade.png') center no-repeat;
+    color: black;
+    text-align: center;
+}
+ 
+div.warning hr {
+    border-color: rgb(var(--swatch-primary-darker));
+}
+:root {
+    --title-font: 'Russo One', "Noto Sans SC", sans-serif;
+    --bright-accent: 164, 194, 236;
+    --medium-accent: 92, 149, 230;
+    --dark-accent: 39, 84, 149;
+    --swatch-border-color: var(--bright-accent);
+}

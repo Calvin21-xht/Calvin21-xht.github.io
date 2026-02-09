@@ -2,7 +2,7 @@
  * 全局CSS变量定义
  * 使用CSS变量便于统一管理和维护样式
  */
- :root {
+:root {
     /* 配色方案 */
     --primary-color: rgb(92, 149, 230); /* 主色调 - 蓝色 */
     --secondary-color: rgb(39, 84, 149); /* 辅助色 - 深蓝色 */
@@ -58,7 +58,6 @@ header {
     text-align: center; /* 文字居中 */
     margin: 0px auto; /* 外边距 */
     background: rgba(39, 84, 149, 0.9); /* 背景颜色 */
-    border-radius: var(--border-radius); /* 圆角 */
     box-shadow: var(--shadow-md); /* 阴影效果 */
     color: white; /* 文字颜色 */
 }
@@ -105,7 +104,7 @@ ul.topnav li a {
     text-align: center; /* 文字居中 */
     padding: 14px 16px; /* 内边距 */
     text-decoration: none; /* 去除下划线 */
-    transition: background-color 0.3s ease; /* 背景色过渡效果 */
+    transition: background-color 0.1s ease; /* 背景色过渡效果 */
 }
 
 /* 
@@ -188,7 +187,7 @@ section {
     justify-content: center; /* 水平居中 */
     margin: 20px; /* 外边距 */
     align-items: center; /* 垂直居中 */
-    flex-direction: row; /* 横向排列 */
+    flex-direction: column; /* 横向排列 */
 }
 
 /* 
@@ -219,6 +218,23 @@ footer {
     margin-top: 40px; /* 上边距 */
     border-radius: var(--border-radius) var(--border-radius) 0 0; /* 顶部圆角 */
     box-shadow: var(--shadow-sm); /* 阴影效果 */
+}
+
+/*
+ *
+ *
+ */
+div.wrapper a:link {
+    color: var(--primary-color);
+    text-decoration:none;
+}
+div.wrapper a:visited {
+    color: var(--primary-color);
+    text-decoration:none;
+}
+div.wrapper a:hover {
+    color: var(--hover-color);
+    text-decoration:underline;
 }
 
 /* 
