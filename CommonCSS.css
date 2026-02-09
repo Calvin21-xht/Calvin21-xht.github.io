@@ -187,7 +187,7 @@ section {
     justify-content: center; /* 水平居中 */
     margin: 20px; /* 外边距 */
     align-items: center; /* 垂直居中 */
-    flex-direction: column; /* 横向排列 */
+    flex-direction: column; /* 竖向排列 */
 }
 
 /* 
@@ -221,8 +221,7 @@ footer {
 }
 
 /*
- *
- *
+ * 链接样式设置
  */
 div.wrapper a:link {
     color: var(--primary-color);
