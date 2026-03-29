@@ -325,7 +325,7 @@ div.wrapper a:hover {
  * 响应式设计断点
  * 1200px以下设备样式调整
  */
-@media screen and (min-width: 1080px) and (max-width: 1600px) {
+@media screen and (min-width: 1080px) and (max-width: 1600px) and (any-pointer:coarse) {
 
     body {
         line-height: 5;
@@ -337,6 +337,7 @@ div.wrapper a:hover {
     }
 
     div.infobox {
+        margin: 10px 10px;
         max-width: max-content;
         width: 90%;  /* 调整宽度 */
         max-width: 90%;  /* 调整最大宽度 */
@@ -383,6 +384,29 @@ div.wrapper a:hover {
     }
 }
 
+@media screen and (min-width: 2000px) {
+    body {
+        /* 针对 4K 屏幕，将基础字号放大，其他 rem/em 元素会随之缩放 */
+        font-size: 200%; 
+        line-height: 1.8;
+    }
+
+    div.infobox {
+        width: 60%;
+        max-width: 1200px; /* 防止在大屏上拉得太宽导致阅读困难 */
+    }
+
+    header, footer {
+        padding: 40px; /* 增加留白感 */
+    }
+
+    ul.topnav li {
+        width: 100%;
+        /* 全宽显示 */
+        max-height: max-content;
+
+    }
+}
 
 /* 
  * 响应式设计断点
