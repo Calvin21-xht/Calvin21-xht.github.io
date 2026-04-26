@@ -58,6 +58,8 @@
  */
 body {
     font-family: 'Russo One', Arial, sans-serif;
+    font-size: clamp(16px, 1.2vw, 20px);
+    line-height: 1.6;   
     /* 字体设置 */
     margin: auto;
     /* 居中布局 */
@@ -105,6 +107,7 @@ ul.topnav {
     /* 背景颜色 */
     display: flex;
     /* flex布局 */
+    flex-wrap: wrap;
     gap: 10px;
     /* 子元素间距 */
     border-radius: var(--border-radius);
@@ -118,7 +121,7 @@ ul.topnav {
  * 控制导航栏中每个项目的布局和行为
  */
 ul.topnav li {
-    float: left;
+    flex: 0 0 auto;
     /* 左浮动布局 */
 }
 
@@ -269,9 +272,7 @@ div.infobox {
     /* 外边距 */
     width: 70%;
     /* 宽度 */
-    max-width: 800px;
-    /* 最大宽度 */
-    min-width: 400px;
+    width: min(90%, 800px);
     /* 最小宽度 */
     border-radius: var(--border-radius);
     /* 圆角 */
@@ -321,133 +322,172 @@ div.wrapper a:hover {
 }
 
 
+a, button {
+    min-height: 20px;
+    min-width: 20px;
+}
+
 /* 
  * 响应式设计断点
  * 1200px以下设备样式调整
  */
-@media screen and (min-width: 1080px) and (max-width: 1600px) and (any-pointer:coarse) {
-
-    body {
-        line-height: 5;
-        font-size: 325%;
+/* =========================
+   基础交互优化（所有触屏设备）
+========================= */
+@media (pointer: coarse) {
+    a, button {
+        min-height: 44px;
+        min-width: 44px;
     }
 
-    section {
-        padding: 10px;
+    /* 让 dropdown 在触屏可点击 */
+    .dropdown:focus-within .dropdown-content {
+        display: block;
+    }
+}
+
+
+/* =========================
+   1️⃣ 手机 + 竖屏设备
+========================= */
+@media (orientation: portrait) and (max-width: 768px) {
+
+    header, footer {
+        padding: 15px;
     }
 
-    div.infobox {
-        margin: 10px 10px;
-        max-width: max-content;
-        width: 90%;  /* 调整宽度 */
-        max-width: 90%;  /* 调整最大宽度 */
-    }
-
-    section {
-        padding: 10px;
+    ul.topnav {
+        flex-direction: column;
     }
 
     ul.topnav li {
         width: 100%;
-        /* 全宽显示 */
-        max-height: max-content;
-
     }
 
-    .dropdown {
+    .dropdown-content {
         position: static;
-        width: 100%
-    }
-
-    .dropdown-content {
-        width: 100%
-    }
-
-    ul.topnav {
-        flex-wrap: wrap;
-        /* 允许换行 */
-    }
-
-    .dropdown-content {
-        position: fixed;
-        /* 静态定位 */
-    }
-
-    header {
-        padding: 10px;
-        /* 调整内边距 */
-    }
-
-    footer {
-        padding: 10px;
-        /* 调整内边距 */
-    }
-}
-
-@media screen and (min-width: 2000px) {
-    body {
-        /* 针对 4K 屏幕，将基础字号放大，其他 rem/em 元素会随之缩放 */
-        font-size: 200%; 
-        line-height: 1.8;
+        width: 100%;
     }
 
     div.infobox {
-        width: 60%;
-        max-width: 1200px; /* 防止在大屏上拉得太宽导致阅读困难 */
+        width: 90%;
+    }
+}
+
+
+/* =========================
+   2️⃣ 竖屏平板（关键补充）
+========================= */
+@media (orientation: portrait) and (min-width: 769px) and (max-width: 1200px) {
+
+    ul.topnav {
+        flex-direction: column;
+    }
+
+    ul.topnav li {
+        width: 100%;
+    }
+
+    .dropdown-content {
+        position: static;
+        width: 100%;
+    }
+
+    div.infobox {
+        width: min(92%, 700px);
+    }
+}
+
+
+/* =========================
+   3️⃣ 横屏触屏设备（核心修复区）
+   👉 iPad / Surface / 触屏笔记本
+========================= */
+@media (orientation: landscape) and (pointer: coarse) and (max-width: 1400px) {
+
+    /* ❗不再放大字体 */
+    body {
+        font-size: clamp(16px, 1.4vw, 20px);
+        line-height: 1.6;
+    }
+
+    /* 导航栏：允许换行但保持横向 */
+    ul.topnav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    ul.topnav li {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+    /* dropdown 改为非悬浮 */
+    .dropdown-content {
+        position: static;
+        width: 100%;
+    }
+
+    /* 内容区优化 */
+    section {
+        padding: 10px;
+    }
+
+    div.infobox {
+        width: min(90%, 750px);
     }
 
     header, footer {
-        padding: 40px; /* 增加留白感 */
-    }
-
-    ul.topnav li {
-        width: 100%;
-        /* 全宽显示 */
-        max-height: max-content;
-
+        padding: 15px;
     }
 }
 
-/* 
- * 响应式设计断点
- * 768px以下设备样式调整
- */
-@media screen and (max-width: 768px) {
-    div.infobox {
-        width: 90%;
-        /* 调整宽度 */
-        min-width: 300px;
-        /* 调整最小宽度 */
-    }
+
+/* =========================
+   4️⃣ 小桌面 / 非触屏过渡区
+========================= */
+@media (pointer: fine) and (max-width: 1200px) {
 
     ul.topnav {
         flex-wrap: wrap;
-        /* 允许换行 */
+    }
+
+    div.infobox {
+        width: min(85%, 750px);
     }
 }
 
-/* 
- * 响应式设计断点
- * 480px以下设备样式调整
- */
-@media screen and (max-width: 480px) {
-    ul.topnav li {
-        width: 100%;
-        /* 全宽显示 */
+
+/* =========================
+   5️⃣ 大屏优化（不破坏2K布局）
+========================= */
+@media (min-width: 1600px) {
+
+    body {
+        font-size: clamp(16px, 1vw, 20px);
     }
 
-    .dropdown-content {
-        position: static;
-        /* 静态定位 */
+    div.infobox {
+        width: min(70%, 1000px);
+    }
+}
+
+
+/* =========================
+   6️⃣ 超大屏（4K+ 温和优化）
+========================= */
+@media (min-width: 2200px) {
+
+    body {
+        font-size: 20px;
+        line-height: 1.7;
     }
 
-    header {
-        padding: 15px;
-        /* 调整内边距 */
+    div.infobox {
+        max-width: 1200px;
     }
 
-    footer {
-        padding: 15px;
-        /* 调整内边距 */
+    header, footer {
+        padding: 30px;
     }
 }
